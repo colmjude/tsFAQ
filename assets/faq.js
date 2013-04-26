@@ -7,11 +7,11 @@
 		faqtmplsource = [
 			'<dl class="faq closed">',
 				'<dt>{{title}}</dt>',
-				'<dd>{{answer}}</dd>',
+				'<dd></dd>',
 			'</dl>'
 		].join("\n");
 
-	$.getJSON("http://faq.tiddlyspace.com/tiddlers.json?select=tag:FAQ&fat=1", function(resp) {
+	$.getJSON("http://faq.tiddlyspace.com/tiddlers.json?select=tag:FAQ&fat=1&render=1", function(resp) {
 		if(resp) {
 			_.each(resp, function(item, index, remaining) {
 				if( _.contains(item.tags, "tiddlyspace") ) {
@@ -28,19 +28,24 @@
 
 	function generateFAQSection(type) {
 		var faqList = (type && type === "tiddlywiki") ? tw_faqs : ts_faqs;
-		var icon = $("<i></i>").addClass("icon-double-angle-right");
-		var section = $("<section></section>")
+		var icon = $("<i></i>").addClass("icon-double-angle-right"),
+			header = $("<header></header>").append( $("<h2></h2>", {"text":type, "class": "open"}).append(icon) ),
+			section = $("<section></section>")
 						.addClass("open")
-						.append( $("<header></header>").append( $("<h2></h2>", {"text":type, "class": "open"}).append(icon) ) );
-		var faqwrap = $("<article></article>");
+						.append( header ),
+			faqwrap = $("<article></article>").appendTo(section);
+
 		_.each(faqList, function(faq, index, list) {
 			var data = {
-				title: faq.title,
-				answer: faq.text
+				title: faq.title
 			};
-			faqwrap
-				.append( faqtmpl(data) )
-				.appendTo(section);
+
+			$( faqtmpl(data) )
+				.find("dd")
+					.append( faq.render )
+					.end()
+				.appendTo(faqwrap);
+
 		});
 		return section;
 	}
