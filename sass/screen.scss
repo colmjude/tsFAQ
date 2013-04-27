@@ -6,6 +6,14 @@
 @import "compass/reset";
 @import "tscolours";
 
+@mixin vendor-prefix($name, $argument) {
+	-webkit-#{$name}: $argument;
+	-ms-#{$name}: $argument;
+	-moz-#{$name}: $argument;
+	-o-#{$name}: $argument;
+	#{$name}: $argument;
+}
+
 $font-fam: Georgia, Times, "Times New Roman", serif;
 $san-serif-fam: "Helvetica Neue", Helvetica, Arial, sans-serif;
 
@@ -98,6 +106,24 @@ h1 {
 			color: lighten($textalt, 10%);
 			padding-left: 1em;
 		}
+	}
+}
+
+dd {
+	a {
+		color: $deep_blue;
+		text-decoration: none;
+
+		&:hover {
+			text-decoration: underline;
+		}
+	}
+
+	pre {
+		font-family: courier, monospace;
+		border-radius: 4px;
+		padding: 1em;
+		background: #F4F1E3;
 	}
 }
 
