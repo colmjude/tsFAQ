@@ -21,6 +21,10 @@ body {
 	font-family: $font-fam;
 	line-height: 1.65em;
 	text-rendering: optimizeLegibility;
+
+	#app-picker {
+		top: 8px;
+	}
 }
 
 body > header {
