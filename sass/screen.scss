@@ -20,6 +20,7 @@ $san-serif-fam: "Helvetica Neue", Helvetica, Arial, sans-serif;
 body {
 	font-family: $font-fam;
 	line-height: 1.65em;
+	text-rendering: optimizeLegibility;
 }
 
 header {
@@ -29,24 +30,15 @@ header {
 	min-height: 40px;
 
 	h1 {
+		text-transform: uppercase;
 		margin: 0 auto;
 		color: #999;
+		font-family: $san-serif-fam;
 		font-size: 20px;
 		font-weight: 200;
 		line-height: 40px;
 		width: 960px;
 	}
-}
-
-h1 {
-	font-size: 72px;
-	text-transform: uppercase;
-	color: $deep_blue;
-	line-height: 1em;
-	font-family: $san-serif-fam;
-	text-rendering: optimizeLegibility;
-	font-weight: bolder;
-	margin: 0.5em 0.25em;
 }
 
 #main {
@@ -150,9 +142,24 @@ dd {
 }
 
 .faq div {
+	h1 {
+		text-transform: uppercase;
+		line-height: 1em;
+		font-weight: bolder;
+		margin: 0.5em 0;
+	}
 	strong {
 		font-weight: 500;
 		color: shade(#35313B, 20%);
+	}
+	ol li {
+		list-style: decimal;
+	}
+	ul li {
+		list-style: disc;
+	}
+	ol li, ul li {
+		margin-left: 1.5em; // is this the perfect indent?
 	}
 }
 
