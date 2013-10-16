@@ -6,7 +6,7 @@
 		faqtmpl,
 		faqtmplsource = [
 			'<dl class="faq closed">',
-				'<dt>{{title}}</dt>',
+				'<dt><i class="icon-angle-right"></i>{{title}}</dt>',
 				'<dd></dd>',
 			'</dl>'
 		].join("\n");
@@ -28,8 +28,7 @@
 
 	function generateFAQSection(type) {
 		var faqList = (type && type === "tiddlywiki") ? tw_faqs : ts_faqs;
-		var icon = $("<i></i>").addClass("icon-double-angle-right"),
-			header = $("<header></header>").append( $("<h2></h2>", {"text":type, "class": "open"}).append(icon) ),
+        var header = $("<header></header>").append( $("<h2></h2>", {"text":type, "class": "open"}) ),
             section = $("<section></section>")
                         .attr("id", type)
                         .addClass("open")
