@@ -212,6 +212,29 @@ dd {
 	ol li, ul li {
 		margin-left: 1.5em; // is this the perfect indent?
 	}
+	blockquote {
+		position: relative;
+		color: #333;
+
+		&:before, &:after {
+			position: absolute;
+			opacity: 0.5;
+			font-size: 1em;
+		}
+		&:before {
+			content: '“';
+			top:  0;
+			left: 0;
+		}
+		&:after {
+			content: '”';
+			bottom: 0;
+			right: 0;
+		}
+	}
+	code {
+		font-family: monospace;
+	}
 }
 
 footer {
