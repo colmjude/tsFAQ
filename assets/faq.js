@@ -82,6 +82,7 @@
 			renderBothSets();
 		} else {
 			$( document ).bind("fetched", "#main", function() {
+			    $("#contentloading").remove();
 				renderBothSets();
 			});
 		}

@@ -72,6 +72,20 @@ body > header {
 	}
 }
 
+#contentloading {
+	text-align: center;
+	font-size: 32px;
+	line-height: 40px;
+	padding: 40px 0;
+	letter-spacing: 2px;
+	color: #333;
+	font-weight: 200;
+
+	i {
+		padding: 0 0.5em;
+	}
+}
+
 #main {
 	width: 840px;
 	margin: 0 auto;
