@@ -110,9 +110,21 @@ body > header {
 			position: relative;
 			padding-left: 40px;
 
+			& > a {
+				text-decoration: none;
+				color: #333;
+			}
+
 			i {
 				position: absolute;
-				left: 0;
+				line-height: 40px;
+
+				&.icon-angle-right {
+					left: 0;
+				}
+				&.icon-edit {
+					right: 0;
+				}
 			}
 		}
 

@@ -1,11 +1,17 @@
 ;(function($) {
 	"use strict";
 	var fetched = false,
+        userIsMember = (tiddlyweb.status.space.recipe.match(/_private$/)) ? true : false,
 		ts_faqs = [],
 		tw_faqs = [],
 		faqtmpl,
 		faqtmplsource = [
 			'<dl class="faq closed">',
+			    '{{#if userIsMember}}',
+			    '<a href="{{href}}" title="edit: {{title}}">',
+			    '<i class="icon-edit"></i>',
+			    '</a>',
+			    '{{/if}}',
 				'<dt><i class="icon-angle-right"></i>{{title}}</dt>',
 				'<dd></dd>',
 			'</dl>'
@@ -26,6 +32,17 @@
 		}
 	});
 
+    function createEditLink(tidTitle) {
+        var twS = tiddlyweb.status,
+            twServer = twS.server_host;
+        if( twS.username === "GUEST" ) {
+            return "#";
+        } else {
+            return twServer.scheme + "://" + twS.space.name + "." + 
+                        twServer.host + "/edit#" + tidTitle;
+        }
+    }
+
 	function generateFAQSection(type) {
 		var faqList = (type && type === "tiddlywiki") ? tw_faqs : ts_faqs;
         var header = $("<header></header>").append( $("<h2></h2>", {"text":type, "class": "open"}) ),
@@ -37,7 +54,9 @@
 
 		_.each(faqList, function(faq, index, list) {
 			var data = {
-				title: faq.title
+				title: faq.title,
+				href: createEditLink( faq.title ),
+				userIsMember: userIsMember
 			};
 
 			$( faqtmpl(data) )
