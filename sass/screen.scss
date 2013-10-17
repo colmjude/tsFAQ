@@ -175,12 +175,15 @@ dd {
 	}
 }
 
-.faq div {
+.faq dd {
 	h1 {
 		text-transform: uppercase;
 		line-height: 1em;
 		font-weight: bolder;
 		margin: 0.5em 0;
+	}
+	p + p {
+		margin-top: 1em;
 	}
 	strong {
 		font-weight: 500;
