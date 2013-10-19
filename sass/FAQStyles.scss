@@ -235,6 +235,20 @@ dd {
 	code {
 		font-family: monospace;
 	}
+	// issue with specificity
+	#main & dl {
+		line-height: 1.5em;
+		dt {
+			font-size: 1em;
+			font-weight: 600;
+			margin: 0;
+		}
+		dd {
+			border: 0;
+			font-weight: 200;
+			padding: 0 0 0 0.5em;
+		}
+	}
 }
 
 footer {
