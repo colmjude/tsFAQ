@@ -4,18 +4,7 @@
         userIsMember = (tiddlyweb.status.space.recipe.match(/_private$/)) ? true : false,
 		ts_faqs = [],
 		tw_faqs = [],
-		faqtmpl,
-		faqtmplsource = [
-			'<dl class="faq closed">',
-			    '{{#if userIsMember}}',
-			    '<a href="{{href}}" title="edit: {{title}}">',
-			    '<i class="icon-edit"></i>',
-			    '</a>',
-			    '{{/if}}',
-				'<dt><i class="icon-angle-right"></i>{{title}}</dt>',
-				'<dd></dd>',
-			'</dl>'
-		].join("\n");
+		faqtmpl;
 
 	$.getJSON("http://faq.tiddlyspace.com/tiddlers.json?select=tag:FAQ&fat=1&render=1", function(resp) {
 		if(resp) {
@@ -70,7 +59,7 @@
 	}
 
 	$(function() {
-		faqtmpl = Handlebars.compile(faqtmplsource);
+		faqtmpl = Handlebars.compile($("#faq-template").html());
 		var $main = $("#main");
 
 		function renderBothSets() {

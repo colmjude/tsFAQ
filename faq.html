@@ -27,6 +27,17 @@
             <i class="icon-spinner icon-spin icon-large"></i>
             Loading FAQS
         </section>
+        <script id="faq-template" type="text/x-handlebars-template">
+            <dl class="faq closed">
+                {{#if userIsMember}}
+                <a href="{{href}}" title="edit: {{title}}">
+                    <i class="icon-edit"></i>
+                </a>
+                {{/if}}
+                <dt><i class="icon-angle-right"></i>{{title}}</dt>
+                <dd></dd>
+            </dl>
+        </script>
 	</div>
 
 	<footer>
