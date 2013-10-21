@@ -44,6 +44,13 @@
 	code {
 		font-family: monospace;
 	}
+	pre {
+		font-family: courier, monospace;
+		border-radius: 4px;
+		padding: 1em;
+		background: #F4F1E3;
+		overflow: auto;
+	}
 	dl {
 		line-height: 1.5em;
 		dt {
