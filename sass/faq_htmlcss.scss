@@ -88,18 +88,4 @@ article section div {
 }
 
 @import "tiddler";
-
-footer {
-	margin: 2em 0;
-	text-align: center;
-	font-size: 16px;
-
-	a {
-		color: $deep_blue;
-		text-decoration: none;
-
-		&:hover {
-			text-decoration: underline;
-		}
-	}
-}
+@import "footer";
