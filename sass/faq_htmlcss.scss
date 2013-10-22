@@ -1,0 +1,105 @@
+@import "compass/reset";
+@import "tscolours";
+
+@mixin vendor-prefix($name, $argument) {
+	-webkit-#{$name}: $argument;
+	-ms-#{$name}: $argument;
+	-moz-#{$name}: $argument;
+	-o-#{$name}: $argument;
+	#{$name}: $argument;
+}
+
+$font-fam: Georgia, Times, "Times New Roman", serif;
+$san-serif-fam: "Helvetica Neue", Helvetica, Arial, sans-serif;
+
+body {
+	font-family: $font-fam;
+	line-height: 1.65em;
+	text-rendering: optimizeLegibility;
+
+	#app-picker {
+		top: 8px;
+	}
+}
+
+body > header {
+	background: #2c2c2c;
+	box-shadow: 0 1px 3px rgba(0, 0, 0, 0.25), inset 0 -1px 0 rgba(0, 0, 0, 0.1);
+	border-color: #252525;
+	min-height: 40px;
+	color: #999;
+	font-family: $san-serif-fam;
+	padding-left: 24px;
+
+    img {
+        width: 32px;
+        height: 32px;
+    }
+
+    a {
+        color: #999;
+        text-decoration: none;
+
+        &:hover {
+            text-decoration: underline;
+            color: white;
+        }
+    }
+}
+
+header h1 {
+    background: none;
+    color: #333;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #eee;
+    font-size: 30px;
+    line-height: 2em;
+}
+
+.modifier {
+    line-height: 2em;
+    border-bottom: 1px solid #eee;
+}
+
+.modified, .tags {
+    display: none;
+}
+
+article {
+    width: 840px;
+    margin: 0 auto;
+    padding-top: 40px;
+    font-family: $san-serif-fam;
+
+    a {
+        color: $deep_blue;
+        text-decoration: none;
+
+        &:hover {
+            text-decoration: underline;
+        }
+    }
+}
+
+article section div {
+    font-size: 18px;
+    line-height: 2em;
+    padding: 0.5em 0 0.5em 1em;
+}
+
+@import "tiddler";
+
+footer {
+	margin: 2em 0;
+	text-align: center;
+	font-size: 16px;
+
+	a {
+		color: $deep_blue;
+		text-decoration: none;
+
+		&:hover {
+			text-decoration: underline;
+		}
+	}
+}
