@@ -1,0 +1,19 @@
+/* Usage:
+   @include vendor-prefix(border-radius, 2px); 
+   */
+@mixin vendor-prefix($name, $argument) {
+    @each $prefix in -webkit-, -moz-, -ms-, -o-, '' {
+        #{$prefix}#{$name}: $argument;
+    }
+}
+
+/* Usage:
+   @include placeholder( shade(#eee, 20%) );
+   */
+@mixin placeholder($color) {
+    @each $prefix in "::-webkit-input-", ":-moz-", "::-moz-", ":-ms-input-" {
+        #{$prefix}placeholder {
+            color: $color;
+        }
+    }
+}

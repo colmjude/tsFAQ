@@ -5,22 +5,7 @@
 
 @import "compass/reset";
 @import "tscolours";
-
-@mixin vendor-prefix($name, $argument) {
-	-webkit-#{$name}: $argument;
-	-ms-#{$name}: $argument;
-	-moz-#{$name}: $argument;
-	-o-#{$name}: $argument;
-	#{$name}: $argument;
-}
-
-@mixin placeholder($color) {
-    @each $prefix in "::-webkit-input-", ":-moz-", "::-moz-", ":-ms-input-" {
-        #{$prefix}placeholder {
-            color: $color;
-        }
-    }
-}
+@import "mixins";
 
 $font-fam: Georgia, Times, "Times New Roman", serif;
 $san-serif-fam: "Helvetica Neue", Helvetica, Arial, sans-serif;
