@@ -14,6 +14,14 @@
 	#{$name}: $argument;
 }
 
+@mixin placeholder($color) {
+    @each $prefix in "::-webkit-input-", ":-moz-", "::-moz-", ":-ms-input-" {
+        #{$prefix}placeholder {
+            color: $color;
+        }
+    }
+}
+
 $font-fam: Georgia, Times, "Times New Roman", serif;
 $san-serif-fam: "Helvetica Neue", Helvetica, Arial, sans-serif;
 
@@ -126,18 +134,7 @@ body > header {
     }
 }
 
-::-webkit-input-placeholder {
-   color: shade(#eee, 15%);
-}
-:-moz-placeholder { /* Firefox 18- */
-   color: shade(#eee, 15%);  
-}
-::-moz-placeholder { /* Firefox 19+ */
-   color: shade(#eee, 15%);
-}
-:-ms-input-placeholder {  
-   color: shade(#eee, 15%);
-}
+@include placeholder( shade(#eee, 15%) );
 
 #main {
 	margin: 0 auto;
