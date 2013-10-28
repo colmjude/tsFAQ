@@ -9,6 +9,8 @@
 
 $font-fam: Georgia, Times, "Times New Roman", serif;
 $san-serif-fam: "Helvetica Neue", Helvetica, Arial, sans-serif;
+$lightest-grey: #eee;
+$base-text: #333;
 
 body {
 	font-family: $font-fam;
@@ -89,7 +91,7 @@ body > header {
 	line-height: 40px;
 	padding: 40px 0;
 	letter-spacing: 2px;
-	color: #333;
+	color: $base-text;
 	font-weight: 200;
 
 	i {
@@ -113,9 +115,9 @@ body > header {
     font-size: 30px;
     line-height: 1em;
     outline: none;
-    border: 2px solid #eee;
+    border: 2px solid $lightest-grey;
     padding: 0.5em 1em;
-    color: #333;
+    color: $base-text;
     @include vendor-prefix("box-sizing", border-box);
     @include vendor-prefix("border-radius", 2px);
 
@@ -128,7 +130,7 @@ body > header {
     }
 }
 
-@include placeholder( shade(#eee, 15%) );
+@include placeholder( shade($lightest-grey, 15%) );
 
 #main {
 	margin: 0 auto;
@@ -140,9 +142,9 @@ body > header {
 
 		header {
 			background: none;
-			color: #333;
+			color: $base-text;
 			padding: 0 12px 10px;
-			border-bottom: 1px solid #eee;
+			border-bottom: 1px solid $lightest-grey;
 
             @media only screen and (min-width: 992px) {
                 padding: 0 0 10px;
@@ -171,7 +173,7 @@ body > header {
 
 			& > a {
 				text-decoration: none;
-				color: #333;
+				color: $base-text;
 			}
 
 			i {
@@ -208,8 +210,8 @@ body > header {
 		}
 
 		dd {
-			border-top: 1px solid #eee;
-			border-bottom: 1px solid #eee;
+			border-top: 1px solid $lightest-grey;
+			border-bottom: 1px solid $lightest-grey;
 			color: lighten($textalt, 10%);
 			padding: 0.5em 0 0.5em;
 
