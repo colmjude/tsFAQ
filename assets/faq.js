@@ -65,6 +65,7 @@
 		function renderBothSets() {
 			$main.append(generateFAQSection('tiddlyspace'));
             $main.append(generateFAQSection('tiddlywiki'));
+            $("#main").sieve({ itemSelector: "dl", textSelector: "dt", searchInput: $("#faqSearch") });
 		}
 
 		if(fetched) {

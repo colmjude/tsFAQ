@@ -104,14 +104,45 @@ body > header {
 	}
 }
 
+#main, #faqSearch {
+    width: 100%;
+    @media only screen and (min-width: 992px) {
+        width: 840px;
+    }
+}
+
+#faqSearch {
+    font-size: 30px;
+    line-height: 1em;
+    outline: none;
+    border: 2px solid #eee;
+    padding: 0.5em 1em;
+    color: #333;
+    @include vendor-prefix("box-sizing", border-box);
+    @include vendor-prefix("border-radius", 2px);
+
+    &:focus {
+        border-left: 2px solid $deep_blue;
+    }
+}
+
+::-webkit-input-placeholder {
+   color: shade(#eee, 15%);
+}
+:-moz-placeholder { /* Firefox 18- */
+   color: shade(#eee, 15%);  
+}
+::-moz-placeholder { /* Firefox 19+ */
+   color: shade(#eee, 15%);
+}
+:-ms-input-placeholder {  
+   color: shade(#eee, 15%);
+}
+
 #main {
-	max-width: 100%;
 	margin: 0 auto;
 	padding-top: 40px;
 	font-family: $san-serif-fam;
-	@media only screen and (min-width: 992px) {
-	    max-width: 840px;
-    }
 
 	section {
 		position: relative;
