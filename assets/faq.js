@@ -69,10 +69,11 @@
 		}
 
 		if(fetched) {
+		    $("body").addClass("fetched");
 			renderBothSets();
 		} else {
 			$( document ).bind("fetched", "#main", function() {
-			    $("#contentloading").remove();
+			    $("body").addClass("fetched");
 				renderBothSets();
 			});
 		}
