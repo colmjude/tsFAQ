@@ -4,14 +4,23 @@
     function FAQs() {
         this.fetched = false;
         this.faqtmpl = undefined;
-        this.ts_faqs = [];
-        this.tw_faqs = [];
+        this.sectionLists = [];
     }
 
-    FAQs.prototype.init = function(tiddlyweb) {
+    FAQs.prototype.init = function(tiddlyweb, options) {
         this.userIsMember = (tiddlyweb.status.space.recipe.match(/_private$/)) ? true : false;
-        this.faqtmpl = Handlebars.compile($("#faq-template").html());
-        this.$main = $("#main");
+        this.settings = $.extend({
+            templateSelector: "#faq-template",
+            containerSelector: "#main",
+            sections: ["TiddlySpace"]
+        }, options);
+        // set up faq buckets
+        var i, sections = this.settings.sections;
+        for(var i = 0; i < sections.length; i++) {
+            this.sectionLists[ sections[i].toLowerCase() + "_faqs" ] = [];
+        }
+        this.faqtmpl = Handlebars.compile( $(this.settings.templateSelector).html() );
+        this.$main = $( this.settings.containerSelector );
         this.bindUIEvents();
         this.fetchFAQs();
     };
@@ -21,11 +30,12 @@
         $.getJSON("http://faq.tiddlyspace.com/tiddlers.json?select=tag:FAQ&fat=1&render=1", function(resp) {
             if(resp) {
                 _.each(resp, function(item, index, remaining) {
-                    if( _.contains(item.tags, "TiddlySpace") ) {
-                        context.ts_faqs.push( item );
-                    }
-                    if( _.contains(item.tags, "TiddlyWiki") ) {
-                        context.tw_faqs.push( item );
+                    var i, sections = context.settings.sections;
+                    for(i = 0; i < sections.length; i++) {
+                        if( _.contains(item.tags, sections[i]) ) {
+                            var arr_name = sections[i].toLowerCase() +"_faqs";
+                            context.sectionLists[ arr_name ].push( item );
+                        }
                     }
                 });
                 context.fetched = true;
@@ -47,7 +57,7 @@
 
     FAQs.prototype.generateFAQSection = function(type) {
         var context = this;
-        var faqList = (type && type === "tiddlywiki") ? context.tw_faqs : context.ts_faqs;
+        var faqList = context.sectionLists[type+"_faqs"];
         var header = $("<header></header>").append( $("<h2></h2>", {"text":type, "class": "open"}) ),
             section = $("<section></section>")
                         .attr("id", type)
@@ -76,7 +86,7 @@
         var context = this;
         $( document ).bind("fetched", "#main", function() {
             $("body").addClass("fetched");
-            context.renderBothSets();
+            context.renderSections();
         });
         context.$main.on("click", "dt", function(e) {
             $(this)
@@ -85,9 +95,11 @@
         });
     };
 
-    FAQs.prototype.renderBothSets = function() {
-        this.$main.append(this.generateFAQSection('tiddlyspace'));
-        this.$main.append(this.generateFAQSection('tiddlywiki'));
+    FAQs.prototype.renderSections = function() {
+        var i, sections = this.settings.sections;
+        for(i = 0; i < sections.length; i++) {
+            this.$main.append(this.generateFAQSection( sections[i].toLowerCase() ));
+        }
         $("#main").sieve({ itemSelector: "dl", textSelector: "dt", searchInput: $("#faqSearch") });
     };
 

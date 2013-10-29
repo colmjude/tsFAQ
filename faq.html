@@ -54,7 +54,9 @@
 	<script src="/faq.js"></script>
     <script>
         $(function() {
-            FAQs.init(tiddlyweb);
+            FAQs.init(tiddlyweb, {
+                sections: ["TiddlySpace", "TiddlyWiki"]
+            });
         });
     </script>
 </body>
