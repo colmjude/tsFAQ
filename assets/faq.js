@@ -84,7 +84,7 @@
 
     FAQs.prototype.bindUIEvents = function() {
         var context = this;
-        $( document ).bind("fetched", "#main", function() {
+        $( document ).on("fetched", function() {
             $("body").addClass("fetched");
             context.renderSections();
         });
