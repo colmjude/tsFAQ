@@ -17,3 +17,16 @@
         }
     }
 }
+
+/* Usage:
+   @include textSelection() {
+        color: blue;
+        background: white;
+   }
+   */
+@mixin textSelection() {
+    @each $prefix in moz-, '' {
+        ::#{$prefix}selection { @content }
+    }
+}
+
