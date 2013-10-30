@@ -14,6 +14,7 @@ $base-text: #333;
 
 body {
 	font-family: $font-fam;
+	font-size: 100%;
 	line-height: 1.65em;
 	text-rendering: optimizeLegibility;
 
@@ -50,9 +51,9 @@ body > header {
 
 	h1 {
 		text-transform: uppercase;
-		font-size: 20px;
+		font-size: 1.25em;
 		font-weight: 200;
-		line-height: 40px;
+		line-height: 2em;
 		padding-left: 12px;
 
         @media only screen and (min-width: 992px) {
@@ -90,10 +91,10 @@ body > header {
 	}
 }
 
-#contentloading {
+.contentloading {
 	text-align: center;
-	font-size: 32px;
-	line-height: 40px;
+	font-size: 2em;
+	line-height: 1.25em;
 	padding: 40px 0;
 	letter-spacing: 2px;
 	color: $base-text;
@@ -108,20 +109,21 @@ body > header {
     }
 }
 
-#main, #faqSearch {
+.main, .faqSearch {
     width: 100%;
     @media only screen and (min-width: 992px) {
         width: 840px;
     }
 }
 
-#faqSearch {
+.faqSearch {
     visibility: hidden;
-    font-size: 30px;
+    font-size: 1.875em;
     line-height: 1em;
     outline: none;
     border: 2px solid $lightest-grey;
     padding: 0.5em 1em;
+    margin: 35px 0 20px;
     color: $base-text;
     @include vendor-prefix("box-sizing", border-box);
     @include vendor-prefix("border-radius", 2px);
@@ -137,9 +139,8 @@ body > header {
 
 @include placeholder( shade($lightest-grey, 15%) );
 
-#main {
+.main {
 	margin: 0 auto;
-	padding-top: 40px;
 	font-family: $san-serif-fam;
 
 	section {
@@ -156,7 +157,7 @@ body > header {
             }
 
 			h2 {
-				font-size: 30px;
+				font-size: 1.875em;
 				line-height: 2em;
 				padding-right: 2em;
 			}
@@ -168,11 +169,11 @@ body > header {
 		margin: 20px auto 5%;
 		background: #fff;
 		color: $textalt;
-		font-size: 18px;
+		font-size: 1.125em;
 
 		dl {
 			padding: 0.5em 20px;
-			line-height: 36px;
+			line-height: 2em;
 			position: relative;
 			padding-left: 5%;
 
@@ -183,13 +184,14 @@ body > header {
 
 			i {
 				position: absolute;
-				line-height: 40px;
 
 				&.icon-angle-right {
 					left: 0;
+					line-height: 1.667em;
 				}
 				&.icon-edit {
 					right: 0;
+					line-height: 2.22em;
 				}
 			}
 		}
@@ -205,8 +207,8 @@ body > header {
 
 		dt {
 			color: rgb(51, 51, 51);
-			line-height: 36px;
-			font-size: 24px;
+			line-height: 1.5em;
+			font-size: 1.33em;
 			margin-bottom: 0.5em;
 			
 			&:hover {

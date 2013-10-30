@@ -22,12 +22,12 @@
         </div>
 	</header>
 	
-	<div id="main">
-        <section id="contentloading">
+	<div id="main" class="main">
+        <section id="contentloading" class="contentloading">
             <i class="icon-spinner icon-spin icon-large"></i>
             Loading FAQS
         </section>
-        <input id="faqSearch" type="text" placeholder="search FAQs..." />
+        <input id="faqSearch" class="faqSearch" type="text" placeholder="search FAQs..." />
         <script id="faq-template" type="text/x-handlebars-template">
             <dl class="faq closed">
                 {{#if userIsMember}}
