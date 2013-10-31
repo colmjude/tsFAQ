@@ -55,7 +55,11 @@
     <script>
         $(function() {
             FAQs.init(tiddlyweb, {
-                sections: ["TiddlySpace", "TiddlyWiki"]
+                sections: ["TiddlySpace", "TiddlyWiki"],
+                callback: function() {
+                    // initiate FAQ filtering using jquery.sieve.js
+                    $("#main").sieve({ itemSelector: "dl", textSelector: "dt", searchInput: $("#faqSearch") });
+                }
             });
         });
     </script>

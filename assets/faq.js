@@ -12,7 +12,8 @@
         this.settings = $.extend({
             templateSelector: "#faq-template",
             containerSelector: "#main",
-            sections: ["TiddlySpace"]
+            sections: ["TiddlySpace"],
+            callback: $.noop
         }, options);
         // set up faq buckets
         var i, sections = this.settings.sections;
@@ -87,6 +88,7 @@
         $( document ).on("fetched", function() {
             $("body").addClass("fetched");
             context.renderSections();
+            context.settings.callback();
         });
         context.$main.on("click", "dt", function(e) {
             $(this)
@@ -100,7 +102,6 @@
         for(i = 0; i < sections.length; i++) {
             this.$main.append(this.generateFAQSection( sections[i].toLowerCase() ));
         }
-        $("#main").sieve({ itemSelector: "dl", textSelector: "dt", searchInput: $("#faqSearch") });
     };
 
     exports.FAQs = new FAQs();
