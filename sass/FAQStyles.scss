@@ -121,12 +121,19 @@ body > header {
     font-size: 1.875em;
     line-height: 1em;
     outline: none;
-    border: 2px solid $lightest-grey;
-    padding: 0.5em 1em;
-    margin: 35px 0 20px;
+    padding: 0.5em;
+    margin: 0;
+    border: 0;
     color: $base-text;
+    text-align: center;
     @include vendor-prefix("box-sizing", border-box);
     @include vendor-prefix("border-radius", 2px);
+
+    @media only screen and (min-width: 480px) {
+        margin: 35px 0 20px;
+        padding: 0.5em 1em;
+        border: 2px solid $lightest-grey;
+    }
 
     &:focus {
         border-left: 2px solid $deep_blue;
@@ -147,10 +154,16 @@ body > header {
 		position: relative;
 
 		header {
-			background: none;
-			color: $base-text;
-			padding: 0 12px 10px;
+			padding: 12px 10px;
 			border-bottom: 1px solid $lightest-grey;
+            background: $dull_blue;
+            color: #fff;
+
+            @media only screen and (min-width: 480px) {
+                background: none;
+                color: $base-text;
+                padding: 0 12px 10px;
+            }
 
             @media only screen and (min-width: 992px) {
                 padding: 0 0 10px;
