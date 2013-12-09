@@ -129,7 +129,7 @@ body > header {
     @include vendor-prefix("box-sizing", border-box);
     @include vendor-prefix("border-radius", 2px);
 
-    @media only screen and (min-width: 480px) {
+    @media only screen and (min-width: 600px) {
         margin: 35px 0 20px;
         padding: 0.5em 1em;
         border: 2px solid $lightest-grey;
@@ -159,7 +159,7 @@ body > header {
             background: $dull_blue;
             color: #fff;
 
-            @media only screen and (min-width: 480px) {
+            @media only screen and (min-width: 600px) {
                 background: none;
                 color: $base-text;
                 padding: 0 12px 10px;
